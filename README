@@ -1,0 +1,10 @@
+# Accumulo WholeRowIterator with Python and Accumulo Thrift Proxy
+
+A brief example which will read from a table using Accumulo's WholeRowIterator. The WholeRowIterator serializes all
+columns in a row into one Key-Value pair. Because Accumulo does not enforce an explicit set of column families, in
+addition to the unlimited column qualifiers, this iterator should only be used when the cardinality of unique columns
+within a row is bounded by some upper limit (hundreds to maybe thousands of columns, depending on value size).
+
+When a row in Accumulo maps to a distinct element or object, this iterator is a very useful tool for grouping relevant
+data together into a single Key-Value instead of many. For small Key-Value pairs, this can also result in more efficient
+RPC calls as more data is sent back per Key-Value pair and less overhead is incurred.
